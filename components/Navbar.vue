@@ -2,14 +2,14 @@
   <nav>
     <div class="nav-center">
       <div class="nav-header">
-        <nuxt-link to="/">
-          <img src="../assets/logo.svg" alt="comfy sloth">
-        </nuxt-link>
+        <NuxtLink to="/">
+          <img id="navbar-logo" src="../assets/logo.svg" alt="comfy sloth">
+        </NuxtLink>
         <ul class="nav-links">
-          <li v-for="(item,index) in routes" :key="index">
-            <nuxt-link :to="item.path">
+          <li v-for="(item,index) in routes" id="navbar-link" :key="index">
+            <NuxtLink :to="item.path">
               {{ item.name }}
-            </nuxt-link>
+            </NuxtLink>
           </li>
         </ul>
       </div>

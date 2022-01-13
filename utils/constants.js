@@ -1,8 +1,8 @@
 export const links = [
   {
-    path: '/about',
+    path: '/',
     id: 1,
-    name: 'about',
+    name: 'index',
   },
   {
     path: '/products',
@@ -10,7 +10,7 @@ export const links = [
     name: 'products',
   },
   {
-    path: '/',
+    path: '/about',
     id: 3,
-    name: 'index',
+    name: 'about',
   }];
