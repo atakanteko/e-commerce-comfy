@@ -12,6 +12,7 @@
             </NuxtLink>
           </li>
         </ul>
+        <CartButton />
       </div>
     </div>
   </nav>
@@ -19,9 +20,13 @@
 
 <script>
 import { links } from '../utils/constants';
+import CartButton from './CartButton';
 
 export default {
   name: 'Navbar',
+  components: {
+    CartButton,
+  },
   data() {
     return {
       routes: links,
