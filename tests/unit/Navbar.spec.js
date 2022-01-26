@@ -1,6 +1,6 @@
 import { createLocalVue, mount } from '@vue/test-utils';
 import Navbar from '../../components/Navbar';
-import { links } from '../../utils/constants';
+import { links } from '../../utils/links';
 
 function mountComponent() {
   const localVue = createLocalVue();

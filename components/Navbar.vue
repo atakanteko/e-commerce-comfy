@@ -19,7 +19,7 @@
 </template>
 
 <script>
-import { links } from '../utils/constants';
+import { links } from '../utils/links';
 import CartButton from './CartButton';
 
 export default {
