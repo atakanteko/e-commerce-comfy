@@ -31,8 +31,11 @@ export default {
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
     // https://go.nuxtjs.dev/eslint
+    // icons comes from https://heroicons.com/
+    // https://www.npmjs.com/package/@nuxt-hero-icons/outline
     '@nuxtjs/eslint-module',
     '@nuxtjs/dotenv',
+    '@nuxt-hero-icons/outline/nuxt',
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
