@@ -10,37 +10,51 @@
         neque nihil nulla pariatur perferendis porro qui quia quod rem saepe sunt tempora vel voluptatum.
       </p>
     </article>
+    <div class="services-center section-center">
+      <article v-for="(item,index) in services" :key="index" class="service">
+        <span class="icon"><outline-globe-alt-icon /></span>
+        <h4>{{ item.title }}</h4>
+        <p>{{ item.text }}</p>
+      </article>
+    </div>
   </section>
 </template>
 
 <script>
+import { services } from '../../utils/services';
 
 export default {
   name: 'ServicesComponent',
+  data() {
+    return {
+      services,
+    };
+  },
 };
 </script>
 <style scoped>
 section{
+  padding: 5rem 0;
   background: var(--clr-primary-10);
 }
 h3,
 h4 {
   color: var(--clr-primary-1);
 }
-.header h3 {
+section .header h3 {
   margin-bottom: 2rem;
 }
-p {
+section p {
   margin-bottom: 0;
   line-height: 1.8;
   color: var(--clr-primary-3);
 }
-.services-center {
+section .services-center {
   margin-top: 4rem;
   display: grid;
   gap: 2.5rem;
 }
-.service {
+section .service {
   background: var(--clr-primary-7);
   text-align: center;
   padding: 2.5rem 2rem;
@@ -49,7 +63,7 @@ p {
 .service p {
   color: var(--clr-primary-2);
 }
-span {
+section span {
   width: 4rem;
   height: 4rem;
   display: grid;
@@ -73,7 +87,7 @@ span {
 }
 @media (min-width: 1280px) {
   section{
-    padding: 0;
+    padding: 2rem 0;
   }
 }
 </style>
