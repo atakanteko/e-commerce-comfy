@@ -1,12 +1,27 @@
 <template>
-  <h1>FeaturedProducts</h1>
+  <section>
+    <Loading v-if="getProductLoadingStatus" />
+    <div v-else class="title">
+      <h2>featured products</h2>
+      <div class="underline" />
+      <div class="section-center featured">
+        <Product v-for="(product, index) in getFeaturedProducts[0]" :key="index" :product="product" />
+      </div>
+    </div>
+  </section>
 </template>
 
 <script>
-import mapGetters from 'vuex/dist/vuex.mjs';
+import { mapGetters } from 'vuex';
+import Loading from '../Loading';
+import Product from '../Product';
 
 export default {
   name: 'FeaturedProducts',
+  components: {
+    Loading,
+    Product,
+  },
   data() {
     return {
       product: this.getFeaturedProducts,
@@ -21,8 +36,12 @@ export default {
 section{
   background: var(--clr-grey-10);
 }
+.title{
+  padding-top: 2rem;
+}
 .featured {
-  margin: 4rem auto;
+  padding-bottom: 3rem;
+  padding-top: 1rem;
   display: grid;
   gap: 2.5rem;
 }
