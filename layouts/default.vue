@@ -13,5 +13,8 @@ import Footer from '../components/Footer';
 export default {
   name: 'DefaultLayout',
   components: { Footer, Navbar },
+  mounted() {
+    this.$store.dispatch('products_context/fetchProducts');
+  },
 };
 </script>
