@@ -7,13 +7,15 @@
       </Nuxt-link>
       <footer>
         <h5>{{ name }}</h5>
-        <p>${{ price }}</p>
+        <p>{{ formattedPrice }}₺</p>
       </footer>
     </div>
   </article>
 </template>
 
 <script>
+import { formatPrice } from '../utils/helpers';
+
 export default {
   name: 'ProductComponent',
   props: {
@@ -34,7 +36,11 @@ export default {
       name: this.product.name,
       price: this.product.price,
       shipping: this.product.shipping,
+      formattedPrice: null,
     };
+  },
+  mounted() {
+    this.formattedPrice = formatPrice(this.price);
   },
 };
 </script>
