@@ -47,15 +47,9 @@ span {
   margin: 0 0 5px 0;
   padding: 0;
   list-style-type: none;
-&:hover {
-.star {
-  color: $active-color;
-}
-}
 }
 .star {
   display: inline-block;
-  cursor: pointer;
 &:hover {
 &~.star {
 &:not(.active) {
