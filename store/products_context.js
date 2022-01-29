@@ -47,7 +47,6 @@ export const actions = {
     try {
       const response = await axios.get(`${singleProductUrl}${id}`);
       const product = response.data;
-      console.log(product);
       context.commit(GET_SINGLE_PRODUCT_SUCCESS, product);
       await context.dispatch('setSingleProductLoading', false);
     } catch (error) {
@@ -77,9 +76,6 @@ export const mutations = {
     state.featured_products.push(featuredProducts);
   },
   [GET_SINGLE_PRODUCT_SUCCESS](state, singleProduct) {
-    console.log('sdsdfs', singleProduct);
-    console.log('xxx', state.single_product);
     state.single_product = { ...state.single_product, ...singleProduct };
-    console.log('sdcccccc', state.single_product);
   },
 };
