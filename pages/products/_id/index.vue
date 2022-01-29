@@ -12,9 +12,12 @@
           <ProductImages :product-images="getSingleProduct.images ? getSingleProduct.images : [{url:''}]" />
           <section class="content">
             <h2>{{ getSingleProduct.name }}</h2>
-            <Stars />
+            <Stars
+              :stars="getSingleProduct.stars"
+              :reviews="getSingleProduct.reviews"
+            />
             <h5 class="price">
-              {{ price }}
+              {{ getPrice }}
             </h5>
             <p class="desc">
               {{ getSingleProduct.description }}
@@ -70,10 +73,12 @@ export default {
     stockStatus() {
       return this.getSingleProduct.stock > 0 ? 'In stock' : 'out of stock'.i;
     },
+    getPrice() {
+      return formatPrice(this.getSingleProduct.price);
+    },
   },
   mounted() {
     this.fetchSingleItem(this.$route.params.id);
-    this.price = formatPrice(this.getSingleProduct.price);
   },
   methods: {
     ...mapActions({

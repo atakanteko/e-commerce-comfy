@@ -77,5 +77,6 @@ export const mutations = {
   },
   [GET_SINGLE_PRODUCT_SUCCESS](state, singleProduct) {
     state.single_product = { ...state.single_product, ...singleProduct };
+    console.log(state.single_product);
   },
 };
