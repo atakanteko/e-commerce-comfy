@@ -8,7 +8,7 @@
         <NuxtLink to="/products" class="btn">
           back to products
         </NuxtLink>
-        <div class="products-center">
+        <div class="products-center" style="display:flex; margin-top: 30px;">
           <ProductImages :product-images="getSingleProduct.images ? getSingleProduct.images : [{url:''}]" />
           <section class="content">
             <h2>{{ getSingleProduct.name }}</h2>

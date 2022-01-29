@@ -1,5 +1,5 @@
 <template>
-  <section>
+  <section style="margin-right: 40px;">
     <img :src="getMainImageUrl" alt="main image" class="main">
     <div class="gallery">
       <img
