@@ -9,7 +9,7 @@
           back to products
         </NuxtLink>
         <div class="products-center">
-          <ProductImages />
+          <ProductImages :product-images="getSingleProduct.images ? getSingleProduct.images : [{url:''}]" />
           <section class="content">
             <h2>{{ getSingleProduct.name }}</h2>
             <Stars />

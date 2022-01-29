@@ -1,10 +1,47 @@
 <template>
-  <h4>product images</h4>
+  <section>
+    <img :src="getMainImageUrl" alt="main image" class="main">
+    <div class="gallery">
+      <img
+        v-for="(item, index) in smallImages"
+        :key="index"
+        :src="item.url"
+        :alt="item.filename"
+        @click="changeMainImage(item.url)"
+      >
+    </div>
+  </section>
 </template>
 
 <script>
 export default {
   name: 'ProductImages',
+  props: {
+    productImages: {
+      type: Array,
+      required: true,
+    },
+  },
+  data() {
+    return {
+      mainImage: null,
+      smallImages: null,
+    };
+  },
+  computed: {
+    getMainImageUrl() {
+      return this.mainImage;
+    },
+  },
+  mounted() {
+    this.mainImage = this.productImages[0].url;
+    this.smallImages = this.productImages;
+  },
+  methods: {
+    changeMainImage(url) {
+      this.mainImage = url;
+    },
+  },
 };
 </script>
 <style scoped>
