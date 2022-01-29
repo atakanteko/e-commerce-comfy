@@ -2,9 +2,41 @@
   <main>
     <Loading v-if="getSingleProductLoadingStatus" />
     <Error v-else-if="getSingleProductErrorStatus" />
-    <h4 v-else>
-      single product page
-    </h4>
+    <div v-else>
+      <BreadCrumb :title="getSingleProduct.name" product="Products" />
+      <div class="section section-center page">
+        <NuxtLink to="/products" class="btn">
+          back to products
+        </NuxtLink>
+        <div class="products-center">
+          <ProductImages />
+          <section class="content">
+            <h2>{{ getSingleProduct.name }}</h2>
+            <Stars />
+            <h5 class="price">
+              {{ price }}
+            </h5>
+            <p class="desc">
+              {{ getSingleProduct.description }}
+            </p>
+            <p class="info">
+              <span>Available : </span>
+              {{ stockStatus }}
+            </p>
+            <p class="info">
+              <span>SKU : </span>
+              {{ getSingleProduct.id }}
+            </p>
+            <p class="info">
+              <span>Brand : </span>
+              {{ getSingleProduct.company }}
+            </p>
+            <hr>
+            <AddToCart v-if="getSingleProduct.stock > 0" />
+          </section>
+        </div>
+      </div>
+    </div>
   </main>
 </template>
 
@@ -12,22 +44,36 @@
 import { mapActions, mapGetters } from 'vuex';
 import Loading from '../../../components/Loading';
 import Error from '../../../components/Error';
+import BreadCrumb from '../../../components/BreadCrumb';
+import { formatPrice } from '../../../utils/helpers';
+import ProductImages from '../../../components/ProductImages';
+import Stars from '../../../components/Stars';
+import AddToCart from '../../../components/Home/AddToCart';
 
 export default {
   name: 'SingleProduct',
   components: {
+    AddToCart,
+    Stars,
+    ProductImages,
     Loading,
     Error,
+    BreadCrumb,
   },
   data() {
     return {
+      price: null,
     };
   },
   computed: {
     ...mapGetters('products_context', ['getSingleProduct', 'getSingleProductLoadingStatus', 'getSingleProductErrorStatus']),
+    stockStatus() {
+      return this.getSingleProduct.stock > 0 ? 'In stock' : 'out of stock'.i;
+    },
   },
   mounted() {
     this.fetchSingleItem(this.$route.params.id);
+    this.price = formatPrice(this.getSingleProduct.price);
   },
   methods: {
     ...mapActions({

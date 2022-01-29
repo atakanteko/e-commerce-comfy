@@ -4,7 +4,10 @@
       <h3>
         <NuxtLink to="/">
           Home
-        </NuxtLink> / {{ title }}
+        </NuxtLink> /
+        <NuxtLink v-if="product" to="/products">
+          Products /
+        </NuxtLink> {{ title }}
       </h3>
     </div>
   </section>
@@ -17,6 +20,10 @@ export default {
     title: {
       type: String,
       default: '',
+    },
+    product: {
+      type: String,
+      default: null,
     },
   },
 };

@@ -24,7 +24,8 @@ export default {
   name: 'ContactComponent',
 };
 </script>
-<style scoped>
+<style lang="scss" scoped>
+
 section{
   padding: 5rem 0;
 }
