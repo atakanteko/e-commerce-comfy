@@ -7,6 +7,7 @@
         :key="index"
         :src="item.url"
         :alt="item.filename"
+        :class="{active: getMainImageUrl === item.url}"
         @click="changeMainImage(item.url)"
       >
     </div>
