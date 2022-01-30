@@ -88,11 +88,6 @@ export default {
 };
 </script>
 <style scoped>
-.product-center {
-  display: grid;
-  gap: 4rem;
-  margin-top: 2rem;
-}
 .price {
   color: var(--clr-primary-5);
 }
@@ -110,10 +105,10 @@ export default {
   font-weight: 700;
 }
 
-@media (min-width: 992px) {
-  .product-center {
-    grid-template-columns: 1fr 1fr;
-    align-items: center;
+@media (max-width: 800px) {
+  .products-center {
+    display: flex;
+    flex-direction: column;
   }
   .price {
     font-size: 1.25rem;
