@@ -5,7 +5,7 @@
       <div class="section-center products">
         <h2>Filters</h2>
         <div>
-          <h2>Sort</h2>
+          <SortComponent />
           <ProductList />
         </div>
       </div>
@@ -16,10 +16,11 @@
 <script>
 import BreadCrumb from '../../components/BreadCrumb';
 import ProductList from '../../components/ProductList';
+import SortComponent from '../../components/Sort';
 
 export default {
   name: 'Products',
-  components: { ProductList, BreadCrumb },
+  components: { SortComponent, ProductList, BreadCrumb },
 };
 </script>
 <style scoped lang="scss">
