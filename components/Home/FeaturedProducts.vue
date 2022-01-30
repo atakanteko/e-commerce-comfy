@@ -5,7 +5,7 @@
       <h2>featured products</h2>
       <div class="underline" />
       <div class="section-center featured">
-        <Product v-for="(product, index) in getFeaturedProducts[0]" :key="index" :product="product" />
+        <Product v-for="(element, index) in getFeaturedProducts[0]" :key="index" :product="element" />
       </div>
     </div>
   </section>

@@ -5,6 +5,7 @@ import {
   GET_SINGLE_PRODUCT_ERROR,
   GET_SINGLE_PRODUCT_LOADING,
   GET_SINGLE_PRODUCT_SUCCESS,
+  LOAD_PRODUCTS,
   SET_LOADING,
 } from './action_types';
 
@@ -16,6 +17,8 @@ export const state = () => ({
   single_product_loading: false,
   single_product_error: false,
   single_product: {},
+  all_products: [],
+  filter_products: [],
 });
 
 export const getters = {
@@ -24,6 +27,8 @@ export const getters = {
   getSingleProductLoadingStatus: state => state.single_product_loading,
   getSingleProductErrorStatus: state => state.single_product_error,
   getSingleProduct: state => state.single_product,
+  getAllProducts: state => state.all_products,
+  getFilterProducts: state => state.filter_products,
 };
 
 export const actions = {
@@ -35,6 +40,7 @@ export const actions = {
     try {
       const response = await axios.get(productsUrl);
       const products = response.data;
+      context.commit(LOAD_PRODUCTS, products);
       const featuredProducts = products.filter(item => item.featured === true);
       context.commit(GET_PRODUCTS_SUCCESS, featuredProducts);
       await context.dispatch('setLoading', false);
@@ -78,5 +84,9 @@ export const mutations = {
   [GET_SINGLE_PRODUCT_SUCCESS](state, singleProduct) {
     state.single_product = { ...state.single_product, ...singleProduct };
     console.log(state.single_product);
+  },
+  [LOAD_PRODUCTS](state, products) {
+    state.all_products.push(...products);
+    state.filter_products.push(...products);
   },
 };
