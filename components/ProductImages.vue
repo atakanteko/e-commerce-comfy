@@ -52,6 +52,7 @@ section{
 
 .main {
   height: 600px;
+  width: 580px;
 }
 img {
   width: 100%;
