@@ -1,10 +1,42 @@
 <template>
-  <h1>New Page</h1>
+  <section>
+    <article v-for="(elem, index) in products" :key="index">
+      <img :src="elem.image" :alt="elem.name">
+      <div>
+        <h4>{{ elem.name }}</h4>
+        <h5 class="price">
+          {{ getFormattedPrice(elem.price) }}
+        </h5>
+        <p>{{ elem.description.substring(0,150) }}...</p>
+        <Nuxt-link :to="{name: 'products-id', params: { id:elem.id } }" class="btn">
+          details
+        </Nuxt-link>
+      </div>
+    </article>
+  </section>
 </template>
 
 <script>
+import { formatPrice } from '../utils/helpers';
+
 export default {
   name: 'ListView',
+  props: {
+    products: {
+      type: Array,
+      default: null,
+    },
+  },
+  data() {
+    return {
+      formattedPrice: null,
+    };
+  },
+  methods: {
+    getFormattedPrice(price) {
+      return formatPrice(price);
+    },
+  },
 };
 </script>
 <style scoped lang="scss">

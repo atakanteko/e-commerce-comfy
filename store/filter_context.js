@@ -1,16 +1,18 @@
+import { SET_IS_GRID_VIEW } from './action_types';
+
 export const state = () => ({
-  items: [],
+  is_grid_view: true,
 });
 export const getters = {
-  getItems: state => state.items,
+  getGridViewStatus: state => state.is_grid_view,
 };
 export const actions = {
-  setItems: (context, payload) => {
-    context.commit('SET', payload);
+  setIsGridView: (context, status) => {
+    context.commit(SET_IS_GRID_VIEW, status);
   },
 };
 export const mutations = {
-  SET(state, payload) {
-    state.items.push(payload);
+  [SET_IS_GRID_VIEW](state, status) {
+    state.is_grid_view = status;
   },
 };
