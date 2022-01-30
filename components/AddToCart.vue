@@ -14,15 +14,21 @@
         </button>
       </div>
     </div>
-    <div class="btn-container">
-      btns
+    <div class="btn-container" style="margin-top: 20px;">
+      <AmountButtons :stock="product.stock" />
+      <NuxtLink to="/cart" class="btn">
+        add to cart
+      </NuxtLink>
     </div>
   </section>
 </template>
 
 <script>
+import AmountButtons from './AmountButtons';
+
 export default {
   name: 'AddToCart',
+  components: { AmountButtons },
   props: {
     product: {
       type: Object,
@@ -50,7 +56,7 @@ export default {
 
 <style scoped lang="scss">
 section{
-   margin-top: 2rem;
+   margin-top: 20px;;
   .colors {
     display: grid;
     grid-template-columns: 125px 1fr;
