@@ -35,7 +35,7 @@
               {{ getSingleProduct.company }}
             </p>
             <hr>
-            <AddToCart v-if="getSingleProduct.stock > 0" />
+            <AddToCart v-if="getSingleProduct.stock > 0" :product="getSingleProduct" />
           </section>
         </div>
       </div>
@@ -51,7 +51,7 @@ import BreadCrumb from '../../../components/BreadCrumb';
 import { formatPrice } from '../../../utils/helpers';
 import ProductImages from '../../../components/ProductImages';
 import Stars from '../../../components/Stars';
-import AddToCart from '../../../components/Home/AddToCart';
+import AddToCart from '../../../components/AddToCart';
 
 export default {
   name: 'SingleProduct',
