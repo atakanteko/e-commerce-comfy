@@ -63,15 +63,10 @@ export default {
     Error,
     BreadCrumb,
   },
-  data() {
-    return {
-      price: null,
-    };
-  },
   computed: {
     ...mapGetters('products_context', ['getSingleProduct', 'getSingleProductLoadingStatus', 'getSingleProductErrorStatus']),
     stockStatus() {
-      return this.getSingleProduct.stock > 0 ? 'In stock' : 'out of stock'.i;
+      return this.getSingleProduct.stock > 0 ? 'In stock' : 'out of stock';
     },
     getPrice() {
       return formatPrice(this.getSingleProduct.price);
