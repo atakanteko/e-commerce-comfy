@@ -46,7 +46,7 @@ export default {
   methods: {
     ...mapActions({
       setViewType: 'filter_context/setIsGridView',
-      setOptionValue: 'filter_context/setIsGridView',
+      setOptionValue: 'filter_context/setOptionValue',
       applySortFunctionality: 'products_context/applySortFunctionality',
     }),
     gridView() {
