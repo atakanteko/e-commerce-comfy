@@ -8,7 +8,7 @@
           :key="index"
           :style="{backgroundColor: item}"
           class="color-btn"
-          @click="setCurrentColor(item,index)"
+          @click="setCurrentColor(index)"
         >
           <outline-check-icon v-if="mainColor === index" style="color: white" />
         </button>
@@ -46,7 +46,7 @@ export default {
     },
   },
   methods: {
-    setCurrentColor(color, index) {
+    setCurrentColor(index) {
       this.currentColor = index;
     },
   },
