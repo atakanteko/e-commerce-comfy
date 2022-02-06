@@ -11,6 +11,8 @@ function mountComponent() {
     },
     stubs: {
       NuxtLink: true,
+      'outline-shopping-cart-icon': true,
+      'outline-login-icon': true,
     },
   });
 }
