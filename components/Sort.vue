@@ -12,7 +12,7 @@
     <hr>
     <form>
       <label htmlFor="sort">sort by</label>
-      <select id="sort" name="sort" class="sort-input">
+      <select id="sort" name="sort" class="sort-input" @change="getOptionValue($event)">
         <option value="price-lowest">
           price (lowest)
         </option>
@@ -46,6 +46,7 @@ export default {
   methods: {
     ...mapActions({
       setViewType: 'filter_context/setIsGridView',
+      setOptionValue: 'filter_context/setOptionValue',
     }),
     gridView() {
       this.setViewType(true);
@@ -53,7 +54,9 @@ export default {
     listView() {
       this.setViewType(false);
     },
-
+    getOptionValue(event) {
+      this.setOptionValue(event.target.value);
+    },
   },
 };
 </script>
