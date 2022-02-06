@@ -12,14 +12,14 @@
     <hr>
     <form>
       <label htmlFor="sort">sort by</label>
-      <select id="sort" name="sort" class="sort-input" @change="getOptionValue($event)">
+      <select id="sort" name="sort" class="sort-input" @change="changeOptionValue($event)">
         <option value="price-lowest">
           price (lowest)
         </option>
         <option value="price-highest">
           price (highest)
         </option>
-        <option value="name-a">
+        <option value="name-a" selected>
           name (a-z)
         </option>
         <option value="name-z">
@@ -40,13 +40,14 @@ export default {
     };
   },
   computed: {
-    ...mapGetters('filter_context', ['getGridViewStatus']),
+    ...mapGetters('filter_context', ['getGridViewStatus', 'getOptionValue']),
     ...mapGetters('products_context', ['getFilterProducts']),
   },
   methods: {
     ...mapActions({
       setViewType: 'filter_context/setIsGridView',
       setOptionValue: 'filter_context/setOptionValue',
+      applySortFunctionality: 'products_context/applySortFunctionality',
     }),
     gridView() {
       this.setViewType(true);
@@ -54,8 +55,9 @@ export default {
     listView() {
       this.setViewType(false);
     },
-    getOptionValue(event) {
+    changeOptionValue(event) {
       this.setOptionValue(event.target.value);
+      this.applySortFunctionality({ value: this.getOptionValue, filteredProducts: this.getFilterProducts });
     },
   },
 };

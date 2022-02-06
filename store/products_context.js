@@ -7,6 +7,7 @@ import {
   GET_SINGLE_PRODUCT_SUCCESS,
   LOAD_PRODUCTS,
   SET_LOADING,
+  SET_SORTED_PRODUCTS,
 } from './action_types';
 
 export const state = () => ({
@@ -66,6 +67,26 @@ export const actions = {
   setSingleProductError: ({ commit }, errorStatus) => {
     commit(GET_SINGLE_PRODUCT_ERROR, errorStatus);
   },
+  applySortFunctionality: (context, { value, filteredProducts }) => {
+    let tempProducts = [...filteredProducts];
+    switch (value) {
+    case 'price-lowest':
+      tempProducts = tempProducts.sort((a, b) => a.price - b.price);
+      break;
+    case 'price-highest':
+      tempProducts = tempProducts.sort((a, b) => b.price - a.price);
+      break;
+    case 'name-a':
+      tempProducts = tempProducts.sort((a, b) => a.name.localeCompare(b.name));
+      break;
+    case 'name-z':
+      tempProducts = tempProducts.sort((a, b) => b.name.localeCompare(a.name));
+      break;
+    default:
+      tempProducts = [...filteredProducts];
+    }
+    context.commit(SET_SORTED_PRODUCTS, tempProducts);
+  },
 };
 
 export const mutations = {
@@ -88,5 +109,8 @@ export const mutations = {
   [LOAD_PRODUCTS](state, products) {
     state.all_products.push(...products);
     state.filter_products.push(...products);
+  },
+  [SET_SORTED_PRODUCTS](state, sortedProducts) {
+    state.filter_products = sortedProducts;
   },
 };
