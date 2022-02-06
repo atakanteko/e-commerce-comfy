@@ -8,7 +8,7 @@
         </Nuxt-link>
         <footer>
           <h5>{{ element.name }}</h5>
-          <!--          <p>{{ element.formattedPrice }}</p>-->
+          <p>{{ getPrice(element.price) }}</p>
         </footer>
       </div>
     </article>
@@ -16,12 +16,19 @@
 </template>
 
 <script>
+import { formatPrice } from '../utils/helpers';
+
 export default {
   name: 'GridView',
   props: {
     products: {
       type: Array,
       default: null,
+    },
+  },
+  methods: {
+    getPrice(price) {
+      return formatPrice(price);
     },
   },
 };
