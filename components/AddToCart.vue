@@ -48,7 +48,6 @@ export default {
   methods: {
     setCurrentColor(color, index) {
       this.currentColor = index;
-      console.log(color);
     },
   },
 };
