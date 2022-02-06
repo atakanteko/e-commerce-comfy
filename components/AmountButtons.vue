@@ -29,9 +29,6 @@ export default {
     getCurrentAmount() {
       return this.amount;
     },
-    getStockStatus() {
-      return this.stockStatus;
-    },
   },
   methods: {
     increaseAmount() {
