@@ -17,6 +17,7 @@ export default {
   props: {
     stock: {
       type: Number,
+      default: null,
     },
   },
   data() {
